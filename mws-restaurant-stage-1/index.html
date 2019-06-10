@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+  <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+  <title>Restaurant Reviews</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h1 tabindex="1"><a href="/">Restaurant Reviews</a></h1>
+    </nav>
+  </header>
+
+  <main id="maincontent">
+    <section id="map-container">
+      <div id="map" aria-label="map view of restaurants" role="application"></div>
+    </section>
+    <section>
+      <nav class="filter-options">
+        <h2>Filter Results</h2>
+        <div id="filters">
+        <select aria-label="Select a neighborhood" tabindex="2" id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+          <option class="selected" value="all">All Neighborhoods</option>
+        </select>
+        <select aria-label="Select a cuisine" tabindex="3" id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+          <option value="all">All Cuisines</option>
+        </select>
+      </div>
+      </nav>
+      <ul aria-label="filtered restaurant list" id="restaurants-list"></ul>
+    </section>
+  </main>
+
+  <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcw3Ove3OtBEdu-q8Cj_rqDaZGjNYgROk&libraries=places&callback=initMap"></script>
+  <script>
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('/sw.js')
+           .then(function() { console.log("Service Worker Registered"); });
+}
+</script>
+
+
+  <footer id="footer">
+    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  </footer>
+
+</body>
+
+</html>
